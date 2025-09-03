@@ -1,45 +1,51 @@
 # LMS Backend (Spring Boot)
 
-This repository contains the backend application for the University Course Management System, developed using Spring Boot. It provides a robust and secure RESTful API to manage academic courses, student registrations, grades, and user authentication with role-based access control.
+This repository hosts the Spring Boot backend for the University Course Management System. It provides a secure, RESTful API for managing courses, users, enrollments, and grades, complete with JWT-based authentication and role-based access control.
 
 ## Table of Contents
 
 - [Features](#features)
 - [Technology Stack](#technology-stack)
-- [Project Structure](#project-structure)
 - [Prerequisites](#prerequisites)
-- [Setup and Local Execution](#setup-and-local-execution)
-  - [MySQL Database Setup (Docker)](#mysql-database-setup-docker)
-  - [Application Configuration](#application-configuration)
-  - [Running the Backend](#running-the-backend)
-- [API Endpoints](#api-endpoints)
-- [Authentication and Authorization](#authentication-and-authorization)
+- [Run Application](#run-application)
 - [Deployment](#deployment)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Features
 
--   **User Authentication & Authorization**: Secure login and registration with JWT (JSON Web Token) and Role-Based Access Control (RBAC) for `STUDENT`, `INSTRUCTOR`, and `ADMIN` roles.
--   **Course Management**: CRUD operations for academic courses (create, retrieve, update, delete).
--   **Student Management**: CRUD operations for student profiles.
--   **Instructor Management**: CRUD operations for instructor profiles.
--   **Enrollment Management**: Functionality to enroll students in courses and manage enrollments.
--   **Grade Management**: Features to assign, view, and update grades for enrolled courses.
--   **Data Validation**: Robust input validation using `jakarta.validation.constraints` on DTOs.
--   **Exception Handling**: Custom exception handling for resources not found or invalid operations.
+-   **User Management**: Secure registration, login, and role-based access for Students, Instructors, and Admins.
+-   **Course Management**: Full CRUD operations for academic courses.
+-   **Student & Instructor Profiles**: CRUD operations for student and instructor details.
+-   **Enrollment & Grade Management**: Functionality for course enrollment and grade assignment/tracking.
+-   **Data Integrity**: Robust validation and custom exception handling.
 
 ## Technology Stack
 
--   **Framework**: Spring Boot 3.x
--   **Language**: Java 17
--   **Build Tool**: Maven
--   **ORM**: Spring Data JPA with Hibernate
--   **Database**: MySQL
--   **Security**: Spring Security, JJWT (Java JWT)
--   **Utilities**: Lombok (for boilerplate code reduction)
--   **Testing**: Spring Boot Starter Test, Postman/Insomnia
+-   **Backend**: Spring Boot 3.x, Java 17, Maven, Spring Data JPA (Hibernate), MySQL.
+-   **Security**: Spring Security, JJWT (JSON Web Token).
+-   **Utilities**: Lombok.
+-   **Testing**: Postman/Insomnia.
 
-## Project Structure
 
-The project follows a standard Spring Boot application structure, with logical grouping of components:
+## Prerequisites
+
+-   Java Development Kit (JDK) 17+
+-   Apache Maven 3.6+
+-   MySQL Server (or Docker)
+-   Git
+
+## Run Application
+
+-   **Build**: mvn clean install
+-   **Run**: mvn spring-boot:run
+  The API will be available at http://localhost:8080.
+
+## Deployment
+he backend is deployed on Railway.
+
+-   **Process**: Integrated with GitHub, main branch pushes automatically trigger build (mvn clean install) and deployment (mvn spring-boot:run).
+-   **Production URL**: [mvn spring-boot:run
+](https://lms-back-end-production-9099.up.railway.app
+
+## License
+This project is licensed under the MIT License.
