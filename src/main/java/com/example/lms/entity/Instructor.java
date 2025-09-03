@@ -25,6 +25,6 @@ public class Instructor {
     private String email;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", referencedColumnName = "id", unique = true) // User account එකකට link කිරීමට
+    @JoinColumn(name = "user_id", referencedColumnName = "id", unique = true) 
     private User user;
 }

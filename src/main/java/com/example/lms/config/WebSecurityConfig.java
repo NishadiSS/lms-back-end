@@ -68,9 +68,9 @@ public class WebSecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll() // මෙහිදී /api/auth යටතේ ඇති සියල්ලටම allow කළ යුතුය
-                        .requestMatchers("/api/test/**").permitAll() // Example public endpoints
-                        .anyRequest().authenticated() // All other requests require authentication
+                        .requestMatchers("/api/auth/**").permitAll() 
+                        .requestMatchers("/api/test/**").permitAll() 
+                        .anyRequest().authenticated() 
                 );
 
         http.authenticationProvider(authenticationProvider());
@@ -86,7 +86,7 @@ public class WebSecurityConfig {
         List<String> origins = Arrays.asList(allowedOrigins.split(","));
         configuration.setAllowedOrigins(origins);
 
-        configuration.setAllowedOrigins(List.of(allowedOrigins)); // මෙහිදී application.yml හි value එක කියවෙනවා
+        configuration.setAllowedOrigins(List.of(allowedOrigins)); 
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "X-Requested-With", "Accept"));
         configuration.setAllowCredentials(true);

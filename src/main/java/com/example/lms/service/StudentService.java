@@ -29,7 +29,7 @@ public class StudentService {
     private final StudentRepository studentRepository;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-    private final PasswordEncoder passwordEncoder; // User account එකක් සාදන විට password encode කිරීමට
+    private final PasswordEncoder passwordEncoder; 
 
     public List<StudentDto> getAllStudents() {
         return studentRepository.findAll().stream()

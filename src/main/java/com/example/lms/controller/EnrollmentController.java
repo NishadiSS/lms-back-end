@@ -36,23 +36,24 @@ public class EnrollmentController {
         return ResponseEntity.ok(enrollmentService.getEnrollmentById(id));
     }
 
-    // Student කෙනෙකුගේ සියලුම enrollments ලබා ගැනීම (Admin, Instructor, හෝ අදාළ Student ට)
+  
     @GetMapping("/student/{studentId}")
-    @PreAuthorize("hasAnyRole('ADMIN', 'INSTRUCTOR') or (hasRole('STUDENT') and @securityUtils.isStudentOwner(#studentId))") // මෙහිදී Student ට තමන්ගේම enrollments බැලීමට අවසර තිබිය යුතුය
+    @PreAuthorize("hasAnyRole('ADMIN','INSTRUCTOR','STUDENT')")
+    //@PreAuthorize("hasAnyRole('ADMIN', 'INSTRUCTOR') or (hasRole('STUDENT') and @securityUtils.isStudentOwner(#studentId))") // මෙහිදී Student ට තමන්ගේම enrollments බැලීමට අවසර තිබිය යුතුය
     public ResponseEntity<List<EnrollmentDto>> getEnrollmentsByStudent(@PathVariable Long studentId) {
         return ResponseEntity.ok(enrollmentService.getEnrollmentsByStudent(studentId));
     }
 
-    // Course එකක සියලුම enrollments ලබා ගැනීම (Admin, Instructor ට පමණක්)
+    
     @GetMapping("/course/{courseId}")
     @PreAuthorize("hasAnyRole('ADMIN', 'INSTRUCTOR')")
     public ResponseEntity<List<EnrollmentDto>> getEnrollmentsByCourse(@PathVariable Long courseId) {
         return ResponseEntity.ok(enrollmentService.getEnrollmentsByCourse(courseId));
     }
 
-    // Course එකකට student කෙනෙක් enroll කිරීම (Admin, හෝ අදාළ Student ට)
+   
    @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN','INSTRUCTOR')")
+    @PreAuthorize("hasAnyRole('ADMIN','INSTRUCTOR','STUDENT')")
     public ResponseEntity<EnrollmentDto> enrollStudentInCourse(@Valid @RequestBody EnrollRequest request) {
         return new ResponseEntity<>(enrollmentService.enrollStudentInCourse(request), HttpStatus.CREATED);
     }
@@ -60,7 +61,7 @@ public class EnrollmentController {
     
 
 
-    // Enrollment එකක් delete කිරීම / student කෙනෙක් course එකකින් withdraw කිරීම (Admin ට පමණක්)
+    
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> deleteEnrollment(@PathVariable Long id) {

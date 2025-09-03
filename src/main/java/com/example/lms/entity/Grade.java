@@ -10,7 +10,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "grades", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"enrollment_id"}) // එක් enrollment එකකට එක් grade එකක් පමණයි
+        @UniqueConstraint(columnNames = {"enrollment_id"}) 
 })
 public class Grade {
     @Id

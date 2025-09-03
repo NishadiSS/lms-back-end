@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Table(name = "enrollments", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"student_id", "course_id"}) // එකම student කෙනෙකුට එකම course එකකට දෙවරක් enroll විය නොහැක
+        @UniqueConstraint(columnNames = {"student_id", "course_id"}) 
 })
 public class Enrollment {
     @Id

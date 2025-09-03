@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface GradeRepository extends JpaRepository<Grade, Long> {
     Optional<Grade> findByEnrollment(Enrollment enrollment);
-    Optional<Grade> findByEnrollmentId(Long enrollmentId); // Enrollment ID එක අනුව Grade සොයා ගැනීමට
+    Optional<Grade> findByEnrollmentId(Long enrollmentId); 
     List<Grade> findByEnrollment_Student_Id(Long studentId);
     List<Grade> findByEnrollment_Course_Id(Long courseId);
 }

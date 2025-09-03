@@ -15,7 +15,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional; // <<-- මෙය එකතු කර තිබිය යුතුය
+import org.springframework.transaction.annotation.Transactional; 
 
 import java.util.HashSet;
 import java.util.Set;
@@ -38,7 +38,7 @@ public class AuthService {
         return jwtTokenProvider.generateToken(authentication);
     }
 
-    @Transactional // <<-- මෙය එකතු කර තිබිය යුතුය
+    @Transactional 
     public void registerUser(RegisterRequest signUpRequest) {
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {
             throw new IllegalArgumentException("Error: Username is already taken!");
@@ -63,26 +63,26 @@ public class AuthService {
             roles.add(userRole);
         } else {
             strRoles.forEach(role -> {
-                // <<<<<<< මෙහි වෙනසක් කරන්න >>>>>>>
-                switch (role.toUpperCase()) { // <<-- මෙහිදී role.toUpperCase() ලෙස වෙනස් කරන්න
-                    case "ADMIN": // <<-- "ADMIN" ලෙස වෙනස් කරන්න
+              
+                switch (role.toUpperCase()) { 
+                    case "ADMIN": 
                         Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(adminRole);
                         break;
-                    case "INSTRUCTOR": // <<-- "INSTRUCTOR" ලෙස වෙනස් කරන්න
+                    case "INSTRUCTOR": 
                         Role modRole = roleRepository.findByName(ERole.ROLE_INSTRUCTOR)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(modRole);
                         break;
-                    case "STUDENT": // <<-- "STUDENT" ලෙස වෙනස් කරන්න (නිවැරදි match එකක් සඳහා)
+                    case "STUDENT": 
                     default: // Default case for any unrecognised role, or if "STUDENT" is explicitly chosen
                         Role userRole = roleRepository.findByName(ERole.ROLE_STUDENT)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(userRole);
-                        break; // <<-- default case එකට break එකක් එකතු කරන්න
+                        break; 
                 }
-                // <<<<<<< මෙහි වෙනසක් කරන්න >>>>>>>
+                
             });
         }
         user.setRoles(roles);

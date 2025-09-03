@@ -74,7 +74,7 @@
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
-            <version>0.11.5</version> <!-- නවතම stable version එකක් භාවිතා කරන්න -->
+            <version>0.11.5</version> 
         </dependency>
         <dependency>
             <groupId>io.jsonwebtoken</groupId>

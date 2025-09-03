@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface InstructorRepository extends JpaRepository<Instructor, Long> {
     Optional<Instructor> findByEmail(String email);
-    Optional<Instructor> findByUserId(Long userId); // User ID එක අනුව Instructor සොයා ගැනීමට
+    Optional<Instructor> findByUserId(Long userId); 
     Boolean existsByEmail(String email);
     Boolean existsByUserId(Long userId);
 }

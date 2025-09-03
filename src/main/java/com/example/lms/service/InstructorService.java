@@ -2,7 +2,7 @@ package com.example.lms.service;
 
 import com.example.lms.dto.instructor.InstructorCreateRequest;
 import com.example.lms.dto.instructor.InstructorDto;
-import com.example.lms.dto.instructor.InstructorMapper; // මෙය එකතු කරන්න
+import com.example.lms.dto.instructor.InstructorMapper; 
 import com.example.lms.dto.instructor.InstructorUpdateRequest;
 import com.example.lms.entity.ERole;
 import com.example.lms.entity.Instructor;
@@ -33,14 +33,14 @@ public class InstructorService {
 
     public List<InstructorDto> getAllInstructors() {
         return instructorRepository.findAll().stream()
-                .map(InstructorMapper::toDto) // මෙහි :: නිවැරදියි
+                .map(InstructorMapper::toDto) 
                 .collect(Collectors.toList());
     }
 
     public InstructorDto getInstructorById(Long id) {
         Instructor instructor = instructorRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Instructor not found with id: " + id));
-        return InstructorMapper.toDto(instructor); // මෙහි . නිවැරදියි
+        return InstructorMapper.toDto(instructor); 
     }
 
     @Transactional

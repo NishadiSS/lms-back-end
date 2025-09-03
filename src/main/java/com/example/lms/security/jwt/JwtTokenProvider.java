@@ -3,7 +3,7 @@ package com.example.lms.security.jwt;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import io.jsonwebtoken.security.SignatureException; // මෙය import කරන්න
+import io.jsonwebtoken.security.SignatureException; 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -71,7 +71,7 @@ public class JwtTokenProvider {
         } catch (IllegalArgumentException e) {
             logger.error("JWT claims string is empty: {}", e.getMessage());
             System.out.println("JwtTokenProvider: JWT Validation FAILED (IllegalArgumentException): " + e.getMessage()); // New log
-        } catch (SignatureException e) { // <<< මෙය වැදගත්! Secret Key mismatch දෝෂය අල්ලා ගනී.
+        } catch (SignatureException e) { 
             logger.error("Invalid JWT signature: {}", e.getMessage());
             System.out.println("JwtTokenProvider: JWT Validation FAILED (SignatureException): " + e.getMessage()); // New log
         }

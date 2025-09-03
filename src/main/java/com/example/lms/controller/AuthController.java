@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "*", maxAge = 3600) // ඔබට CORS සැකසුම් application.yml වලින් පාලනය කළ හැක
+@CrossOrigin(origins = "*", maxAge = 3600) 
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
@@ -32,11 +32,8 @@ public class AuthController {
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
 
-        // Note: You might need to fetch the User entity to get the ID for JwtResponse
-        // For simplicity, we are assuming UserDetails contains sufficient info or fetching by username is fine.
-        // A better approach would be to have a custom UserDetails implementation.
-        // For now, let's use a dummy ID.
-        Long userId = userDetailsService.loadUserByUsername(loginRequest.getUsername()).hashCode() * 1L; // Placeholder
+       
+        Long userId = userDetailsService.loadUserByUsername(loginRequest.getUsername()).hashCode() * 1L; 
 
         return ResponseEntity.ok(new JwtResponse(jwt, userId, userDetails.getUsername(), userDetails.getUsername(), roles));
     }

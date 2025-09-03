@@ -32,8 +32,7 @@ public class LmsBackEndApplication {
                 roleRepository.save(new Role(null, ERole.ROLE_ADMIN));
             }
 
-            // You can also create an initial admin user here if needed
-            // For simplicity, we'll assume users register via the /api/auth/register endpoint
+           
         };
     }
 }
